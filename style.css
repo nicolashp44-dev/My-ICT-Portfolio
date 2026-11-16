@@ -1,0 +1,246 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #080b16;
+    color: #f8fafc;
+    line-height: 1.7;
+}
+
+/* NAVIGATION */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(8, 11, 22, 0.85);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 18px 8%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: #8b5cf6;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #a78bfa;
+}
+
+/* HOME */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 10%;
+    background:
+        radial-gradient(ellipse at 75% 35%, rgba(91, 33, 182, 0.22), transparent 45%),
+        radial-gradient(ellipse at 15% 75%, rgba(37, 99, 235, 0.13), transparent 40%);
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.intro {
+    color: #a78bfa;
+    letter-spacing: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 6vw, 68px);
+    line-height: 1.15;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.hero h1 span {
+    background: linear-gradient(90deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero h2 {
+    font-size: 24px;
+    color: #c4b5fd;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #94a3b8;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+/* BUTTONS */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.25);
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(139, 92, 246, 0.4);
+}
+
+/* GENERAL SECTIONS */
+.section {
+    padding: 100px 10%;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 36px;
+    margin-bottom: 45px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.section > p {
+    max-width: 750px;
+    margin: auto;
+    color: #94a3b8;
+}
+
+/* CARDS */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: linear-gradient(
+        145deg,
+        rgba(30, 41, 59, 0.8),
+        rgba(15, 23, 42, 0.9)
+    );
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    padding: 32px;
+    border-radius: 18px;
+    text-align: left;
+    transition: 0.35s ease;
+    backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: #8b5cf6;
+    box-shadow: 0 15px 40px rgba(91, 33, 182, 0.18);
+}
+
+.card h3 {
+    font-size: 19px;
+    color: #c4b5fd;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+/* CLICKABLE PROJECT CARDS */
+.project-card {
+    display: block;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+.project-card span {
+    display: inline-block;
+    margin-top: 25px;
+    color: #60a5fa;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.project-card:hover span {
+    color: #c4b5fd;
+}
+
+/* FOOTER */
+footer {
+    background: #0d1222;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+
+    header {
+        padding: 18px 5%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 70px 7%;
+    }
+
+    .section {
+        padding: 70px 7%;
+    }
+
+    .section h2 {
+        font-size: 29px;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}
