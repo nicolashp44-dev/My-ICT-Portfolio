@@ -18,6 +18,24 @@ body {
     background: #0b1120;
     color: #f8fafc;
     line-height: 1.6;
+    overflow-x: hidden;
+    animation: pageEnter 0.8s ease-out both;
+}
+
+/* PAGE ENTRANCE ANIMATION */
+
+@keyframes pageEnter {
+    0% {
+        opacity: 0;
+        transform: translateY(25px);
+        filter: blur(6px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
 }
 
 /* NAVIGATION */
@@ -205,17 +223,25 @@ nav a:hover {
 
 .slide.active {
     display: block;
-    animation: fadeIn 0.35s ease;
+    animation: cinematicSlide 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-@keyframes fadeIn {
-    from {
+@keyframes cinematicSlide {
+    0% {
         opacity: 0;
-        transform: translateY(8px);
+        transform: translateY(30px) scale(0.97);
+        filter: blur(10px);
     }
-    to {
+
+    60% {
         opacity: 1;
-        transform: translateY(0);
+        filter: blur(2px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
     }
 }
 
@@ -711,6 +737,209 @@ button:disabled {
     font-size: 14px;
 }
 
+/* =================================
+   PREMIUM AESTHETIC SLIDE ANIMATIONS
+================================= */
+
+/* Slide labels */
+
+.slide.active .slide-label {
+    animation: labelReveal 0.7s ease 0.15s both;
+}
+
+@keyframes labelReveal {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+        letter-spacing: 4px;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: 1px;
+    }
+}
+
+/* Slide titles */
+
+.slide.active .slide-title,
+.slide.active .description h2 {
+    animation: titleReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+@keyframes titleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+        filter: blur(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* Paragraph animations */
+
+.slide.active p {
+    animation: paragraphReveal 0.7s ease 0.35s both;
+}
+
+@keyframes paragraphReveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Lesson card animations */
+
+.slide.active .lesson-card {
+    animation: lessonReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.slide.active .lesson-card:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.slide.active .lesson-card:nth-child(2) {
+    animation-delay: 0.45s;
+}
+
+@keyframes lessonReveal {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.96);
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Demonstration card animation */
+
+.slide.active .demo-card {
+    animation: demoReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+@keyframes demoReveal {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* Demonstration heading animation */
+
+.slide.active .demo-card h2 {
+    animation: headingReveal 0.7s ease 0.7s both;
+}
+
+@keyframes headingReveal {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Conclusion summary card animations */
+
+.slide.active .summary-card {
+    animation: summaryReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.slide.active .summary-card:nth-child(1) {
+    animation-delay: 0.35s;
+}
+
+.slide.active .summary-card:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.slide.active .summary-card:nth-child(3) {
+    animation-delay: 0.65s;
+}
+
+@keyframes summaryReveal {
+    from {
+        opacity: 0;
+        transform: translateX(-25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+/* Interactive card hover effects */
+
+.lesson-card,
+.summary-card,
+.demo-card {
+    transition:
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+}
+
+.lesson-card:hover,
+.summary-card:hover {
+    border-color: rgba(56, 189, 248, 0.65);
+    box-shadow: 0 12px 35px rgba(56, 189, 248, 0.10);
+}
+
+/* Button hover effects */
+
+.primary-btn,
+.reset-btn,
+.nav-btn,
+.law-card,
+.back-button {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.primary-btn:hover:not(:disabled),
+.reset-btn:hover,
+.nav-btn:hover:not(:disabled),
+.law-card:hover,
+.back-button:hover {
+    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.18);
+}
+
+/* Smooth progress bar */
+
+.progress-fill {
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* SLIDE NAVIGATION */
 
 .slide-navigation {
@@ -832,6 +1061,16 @@ footer {
     .nav-btn {
         padding: 11px 14px;
         font-size: 13px;
+    }
+}
+
+/* REDUCED MOTION ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    .slide.active,
+    .slide.active * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 }
 </style>
