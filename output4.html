@@ -1,22 +1,1460 @@
 
-<!-- OUTPUT 4: Save as output4.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Output 4 - Animated Educational Presentation</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Output 4 - Newton's Laws of Motion</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b1120;
+    color: #f8fafc;
+    line-height: 1.6;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: #111c30;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.25);
+    border-bottom: 1px solid #263750;
+}
+
+nav h2 {
+    color: #38bdf8;
+    font-size: 21px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #cbd5e1;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+/* MAIN CONTAINER */
+
+.container {
+    max-width: 1000px;
+    margin: 55px auto;
+    padding: 0 20px;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.heading .label {
+    display: inline-block;
+    background: #17243a;
+    color: #38bdf8;
+    border: 1px solid #263750;
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.heading h1 {
+    font-size: 36px;
+    color: #f8fafc;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.heading p {
+    color: #cbd5e1;
+    font-size: 16px;
+}
+
+/* CONTENT CARDS */
+
+.description,
+.lesson-card,
+.summary-card,
+.demo-card {
+    background: #17243a;
+    color: #f8fafc;
+    border: 1px solid #263750;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.18);
+    margin-bottom: 30px;
+}
+
+.description h2,
+.lesson-card h2,
+.demo-card h2 {
+    color: #38bdf8;
+    margin-bottom: 12px;
+    font-size: 23px;
+}
+
+.description p,
+.lesson-card p,
+.demo-card p {
+    color: #cbd5e1;
+    font-size: 16px;
+}
+
+/* ACTIVITY INSTRUCTIONS */
+
+.instructions {
+    background: #17243a;
+    border: 1px solid #263750;
+    border-left: 5px solid #38bdf8;
+    padding: 27px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.instructions h2 {
+    color: #38bdf8;
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.instructions h3 {
+    color: #7dd3fc;
+    margin-top: 17px;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.instructions p,
+.instructions li {
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+.instructions ul {
+    padding-left: 23px;
+    margin-top: 7px;
+}
+
+.instructions li {
+    margin-bottom: 6px;
+}
+
+/* LAW MENU */
+
+.law-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 22px;
+}
+
+.law-card {
+    display: block;
+    background: #111c30;
+    border: 1px solid #263750;
+    border-radius: 14px;
+    padding: 20px 14px;
+    color: #f8fafc;
+    text-align: center;
+    cursor: pointer;
+    font: inherit;
+    transition: 0.3s;
+}
+
+.law-card:hover {
+    background: #20334d;
+    border-color: #38bdf8;
+    transform: translateY(-3px);
+}
+
+.law-card .number {
+    display: block;
+    color: #38bdf8;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.law-card small {
+    display: block;
+    color: #cbd5e1;
+    margin-top: 5px;
+}
+
+/* SLIDES */
+
+.slide {
+    display: none;
+}
+
+.slide.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-label {
+    display: inline-block;
+    background: #17243a;
+    color: #38bdf8;
+    border: 1px solid #263750;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.slide-title {
+    color: #f8fafc;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.blue {
+    color: #38bdf8;
+}
+
+/* LESSON CONTENT */
+
+.lesson-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    align-items: stretch;
+}
+
+.lesson-card {
+    margin-bottom: 0;
+    padding: 25px;
+}
+
+.lesson-card h3 {
+    color: #38bdf8;
+    font-size: 16px;
+    margin-bottom: 9px;
+}
+
+.lesson-card p {
+    font-size: 15px;
+}
+
+.formula {
+    color: #38bdf8;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+/* DEMONSTRATION */
+
+.demo-card {
+    padding: 25px;
+    margin-top: 22px;
+}
+
+.scene {
+    position: relative;
+    height: 300px;
+    margin-top: 15px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #263750;
+    background: linear-gradient(
+        #17243a 0%,
+        #20334d 75%,
+        #263750 75%
+    );
+}
+
+.scene-heading {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #cbd5e1;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    z-index: 3;
+}
+
+.scene-ground {
+    position: absolute;
+    height: 6px;
+    background: #38bdf8;
+    left: 0;
+    right: 0;
+    bottom: 48px;
+}
+
+.scene-status {
+    position: absolute;
+    bottom: 12px;
+    left: 8px;
+    right: 8px;
+    text-align: center;
+    color: #f8fafc;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 4;
+}
+
+.scene-object {
+    position: absolute;
+    z-index: 2;
+}
+
+/* ROCKET ANIMATION */
+
+.rocket-scene {
+    position: relative;
+    height: 210px;
+    margin: 25px 0;
+    overflow: hidden;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #0b1120, #17243a, #075985);
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.25);
+}
+
+.rocket-scene::before {
+    content: "✦       ·       ✧          ·       ✦";
+    position: absolute;
+    top: 25px;
+    left: 10%;
+    width: 80%;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 18px;
+    opacity: 0.8;
+}
+
+.rocket-scene::after {
+    content: "·       ✦        ·        ✧";
+    position: absolute;
+    bottom: 45px;
+    right: 8%;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 16px;
+    opacity: 0.7;
+}
+
+.rocket {
+    position: absolute;
+    left: -100px;
+    bottom: 35px;
+    font-size: 65px;
+    z-index: 2;
+    transform: rotate(-35deg);
+    animation: rocketFlight 7s linear infinite;
+}
+
+.rocket-flame {
+    position: absolute;
+    left: -100px;
+    bottom: 32px;
+    font-size: 32px;
+    z-index: 1;
+    animation: rocketFlame 7s linear infinite;
+}
+
+@keyframes rocketFlight {
+    0% {
+        left: -100px;
+        bottom: 25px;
+        transform: rotate(-35deg);
+    }
+    25% {
+        bottom: 65px;
+        transform: rotate(-30deg);
+    }
+    50% {
+        bottom: 110px;
+        transform: rotate(-35deg);
+    }
+    75% {
+        bottom: 75px;
+        transform: rotate(-30deg);
+    }
+    100% {
+        left: calc(100% + 100px);
+        bottom: 135px;
+        transform: rotate(-35deg);
+    }
+}
+
+@keyframes rocketFlame {
+    0% {
+        left: -125px;
+        bottom: 10px;
+        opacity: 0.8;
+    }
+    50% {
+        bottom: 95px;
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% + 75px);
+        bottom: 120px;
+        opacity: 0.8;
+    }
+}
+
+/* BUTTONS */
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 17px;
+}
+
+.primary-btn,
+.reset-btn,
+.nav-btn,
+.back-button {
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.primary-btn,
+.nav-btn,
+.back-button {
+    color: #0b1120;
+    background: #38bdf8;
+}
+
+.primary-btn:hover,
+.nav-btn:hover:not(:disabled),
+.back-button:hover {
+    background: #7dd3fc;
+    transform: translateY(-2px);
+}
+
+.reset-btn {
+    background: #263750;
+    color: #cbd5e1;
+    border: 1px solid #334b68;
+}
+
+.reset-btn:hover {
+    background: #334b68;
+    color: #ffffff;
+}
+
+button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* EXPLANATION */
+
+.explanation {
+    background: #111c30;
+    border: 1px solid #263750;
+    border-left: 4px solid #38bdf8;
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 17px;
+}
+
+.explanation h3 {
+    color: #38bdf8;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.explanation p {
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+/* FIRST LAW: BASKETBALL */
+
+#basketball {
+    left: 8%;
+    bottom: 52px;
+    font-size: 52px;
+}
+
+#basketScene.playing #basketball {
+    animation: basketballMove 4s ease-out forwards;
+}
+
+@keyframes basketballMove {
+    0% {
+        left: 8%;
+        transform: rotate(0);
+    }
+    25% {
+        left: 32%;
+        transform: rotate(180deg);
+    }
+    55% {
+        left: 60%;
+        transform: rotate(360deg);
+    }
+    85%, 100% {
+        left: 77%;
+        transform: rotate(540deg);
+    }
+}
+
+/* SECOND LAW: SHOPPING CART */
+
+.cart {
+    left: 8%;
+    bottom: 52px;
+    font-size: 65px;
+}
+
+#cartScene.gentle .cart {
+    animation: cartGentle 2.5s ease-out forwards;
+}
+
+#cartScene.strong .cart {
+    animation: cartStrong 2.5s ease-out forwards;
+}
+
+@keyframes cartGentle {
+    to {
+        left: 38%;
+    }
+}
+
+@keyframes cartStrong {
+    to {
+        left: 76%;
+    }
+}
+
+.cart-force {
+    position: absolute;
+    left: 12%;
+    bottom: 125px;
+    color: #38bdf8;
+    font-size: 27px;
+    opacity: 0;
+}
+
+#cartScene.gentle .cart-force {
+    animation: gentleArrow 1.8s forwards;
+}
+
+#cartScene.strong .cart-force {
+    animation: strongArrow 1.8s forwards;
+}
+
+@keyframes gentleArrow {
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(65px);
+    }
+}
+
+@keyframes strongArrow {
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(200px);
+    }
+}
+
+/* THIRD LAW: JUMPING PERSON */
+
+.jumper {
+    left: 42%;
+    bottom: 52px;
+    font-size: 62px;
+}
+
+.jump-arrow,
+.reaction-arrow {
+    position: absolute;
+    bottom: 120px;
+    font-size: 30px;
+    opacity: 0;
+    z-index: 3;
+}
+
+.jump-arrow {
+    left: 45%;
+}
+
+.reaction-arrow {
+    left: 53%;
+}
+
+#jumpScene.jumping .jumper {
+    animation: jumpUp 1.6s ease-in-out forwards;
+}
+
+#jumpScene.jumping .jump-arrow {
+    animation: pushDown 1.6s ease forwards;
+}
+
+#jumpScene.jumping .reaction-arrow {
+    animation: pushUp 1.6s ease forwards;
+}
+
+@keyframes jumpUp {
+    0%, 15% {
+        bottom: 52px;
+        transform: rotate(0);
+    }
+    45%, 75% {
+        bottom: 175px;
+    }
+    100% {
+        bottom: 52px;
+        transform: rotate(0);
+    }
+}
+
+@keyframes pushDown {
+    0%, 15% {
+        opacity: 0;
+    }
+    25%, 65% {
+        opacity: 1;
+        transform: translateY(25px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+}
+
+@keyframes pushUp {
+    0%, 15% {
+        opacity: 0;
+    }
+    25%, 65% {
+        opacity: 1;
+        transform: translateY(-65px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-75px);
+    }
+}
+
+/* CONCLUSION */
+
+.summary-list {
+    display: grid;
+    gap: 15px;
+    margin: 22px 0;
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
+    margin: 0;
+}
+
+.summary-card .symbol {
+    font-size: 38px;
+}
+
+.summary-card h3 {
+    color: #38bdf8;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.summary-card p {
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+/* SLIDE NAVIGATION */
+
+.slide-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.page-number {
+    color: #cbd5e1;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.progress {
+    width: 100%;
+    height: 6px;
+    background: #263750;
+    border-radius: 10px;
+    margin-top: 14px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 20%;
+    background: #38bdf8;
+    transition: width 0.3s;
+}
+
+.back-button {
+    display: block;
+    width: fit-content;
+    margin: 30px auto 0;
+    text-align: center;
+}
+
+/* FOOTER */
+
+footer {
+    background: #111c30;
+    color: #cbd5e1;
+    text-align: center;
+    padding: 22px;
+    margin-top: 60px;
+    font-size: 14px;
+    border-top: 1px solid #263750;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 700px) {
+    nav {
+        padding: 15px 5%;
+    }
+
+    .container {
+        margin: 35px auto;
+    }
+
+    .heading h1 {
+        font-size: 29px;
+    }
+
+    .lesson-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .law-menu {
+        grid-template-columns: 1fr;
+    }
+
+    .description,
+    .lesson-card,
+    .demo-card {
+        padding: 21px;
+    }
+
+    .instructions {
+        padding: 21px;
+    }
+
+    .scene {
+        height: 270px;
+    }
+
+    .slide-title {
+        font-size: 26px;
+    }
+
+    .rocket-scene {
+        height: 180px;
+    }
+
+    .rocket {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 430px) {
+    nav h2 {
+        font-size: 18px;
+    }
+
+    .slide-navigation {
+        flex-wrap: wrap;
+    }
+
+    .page-number {
+        order: -1;
+        width: 100%;
+        text-align: center;
+    }
+
+    .primary-btn,
+    .reset-btn,
+    .nav-btn {
+        padding: 11px 14px;
+        font-size: 13px;
+    }
+}
+</style>
 </head>
+
 <body>
-    <section class="section">
-        <h2>Output 4 - Animated Educational Presentation</h2>
-        <div class="card">
-            <h3>My Animated Presentation</h3>
-            <p>This page contains my Animated Educational Presentation.</p>
-        </div>
-        <br>
-        <a href="index.html#projects" class="btn">← Back to Projects</a>
+
+<nav>
+    <h2>ICT Portfolio</h2>
+    <a href="index.html">Home</a>
+</nav>
+
+<main class="container">
+
+    <!-- PAGE HEADING -->
+
+    <section class="heading">
+        <span class="label">OUTPUT 04</span>
+        <h1>Newton's Laws of Motion</h1>
+        <p>Discover how forces affect the movement of objects</p>
     </section>
+
+    <!-- ACTIVITY INSTRUCTIONS -->
+
+    <section class="instructions">
+        <h2>Activity Instructions</h2>
+
+        <p>
+            <strong>OUTPUT 4 – Animated Educational Presentation</strong>
+        </p>
+
+        <h3>Title: Newton's Laws of Motion in Real Life</h3>
+
+        <p>
+            Create a 3–5-slide animated presentation explaining
+            Newton's three laws of motion and their applications
+            in everyday life.
+        </p>
+
+        <h3>Presentation Requirements</h3>
+
+        <ul>
+            <li>Explain the First Law of Motion.</li>
+            <li>Explain the Second Law of Motion.</li>
+            <li>Explain the Third Law of Motion.</li>
+            <li>Provide real-life examples of each law.</li>
+        </ul>
+
+        <h3>Presentation Platform</h3>
+
+        <p>
+            PowerPoint, Canva, or Google Slides may be used to create
+            the presentation.
+        </p>
+
+        <h3>Website Display</h3>
+
+        <p>
+            Embed the presentation or provide a viewable presentation
+            link on the website.
+        </p>
+    </section>
+
+    <!-- PRESENTATION DESCRIPTION -->
+
+    <section class="description">
+        <h2>Animated Educational Presentation</h2>
+
+        <p>
+            This presentation explains Newton's three laws of motion
+            using simple explanations and examples that we can see
+            in our daily lives. It shows how objects start moving,
+            how pushing affects their movement, and how forces work
+            when a person jumps.
+        </p>
+
+        <div class="law-menu">
+
+            <button class="law-card" onclick="goTo(1)">
+                <span class="number">01</span>
+                FIRST LAW
+                <small>Law of Inertia</small>
+            </button>
+
+            <button class="law-card" onclick="goTo(2)">
+                <span class="number">02</span>
+                SECOND LAW
+                <small>Law of Acceleration</small>
+            </button>
+
+            <button class="law-card" onclick="goTo(3)">
+                <span class="number">03</span>
+                THIRD LAW
+                <small>Action and Reaction</small>
+            </button>
+
+        </div>
+    </section>
+
+    <!-- SLIDE 1: INTRODUCTION -->
+
+    <section class="slide active" id="slide0">
+
+        <div class="description" style="text-align:center;">
+
+            <span class="slide-label">INTRODUCTION</span>
+
+            <h2 style="font-size:30px;color:#f8fafc;margin-bottom:12px;">
+                The Science of <span class="blue">Movement</span>
+            </h2>
+
+            <p>
+                Newton's laws help us understand why objects move or stay still.
+                We can see these laws in simple activities like playing
+                basketball, pushing a shopping cart, and jumping.
+            </p>
+
+            <div class="rocket-scene">
+                <div class="rocket-flame">🔥</div>
+                <div class="rocket">🚀</div>
+            </div>
+
+            <h3 class="blue" style="margin-bottom:8px;">
+                LET'S EXPLORE THE THREE LAWS!
+            </h3>
+
+            <p>Use the buttons below to move through the presentation.</p>
+
+        </div>
+    </section>
+
+    <!-- SLIDE 2: FIRST LAW -->
+
+    <section class="slide" id="slide1">
+
+        <span class="slide-label">01 / NEWTON'S FIRST LAW</span>
+
+        <h2 class="slide-title">
+            Law of <span class="blue">Inertia</span>
+        </h2>
+
+        <div class="lesson-grid">
+
+            <div class="lesson-card">
+                <h3>WHAT IS THE FIRST LAW?</h3>
+                <p>
+                    The first law means that an object will stay still
+                    if nothing makes it move. If an object is already moving,
+                    it will keep moving until a force changes its motion.
+                </p>
+            </div>
+
+            <div class="lesson-card">
+                <h3>REAL-LIFE EXAMPLE: BASKETBALL</h3>
+                <p>
+                    A basketball will not move by itself while it is on
+                    the court. A player needs to push or kick it to make
+                    it move. When the ball rolls, the court slowly slows
+                    it down because of friction until it stops.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="demo-card">
+
+            <h2>Animated Demonstration</h2>
+            <p>Press the button to apply a force and watch the basketball move.</p>
+
+            <div class="scene" id="basketScene">
+                <div class="scene-heading">BASKETBALL COURT</div>
+                <div class="scene-object" id="basketball">🏀</div>
+                <div class="scene-ground"></div>
+                <div class="scene-status" id="ballStatus">
+                    The basketball is at rest.
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="primary-btn" onclick="playBall()">
+                    ▶ Roll Basketball
+                </button>
+
+                <button class="reset-btn" onclick="resetBall()">
+                    ↻ Replay
+                </button>
+            </div>
+
+            <div class="explanation">
+                <h3>WHAT HAPPENS?</h3>
+                <p id="ballText">
+                    The basketball is not moving at first. When the player
+                    pushes it, the ball starts rolling. Friction from the
+                    court slowly makes it stop.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SLIDE 3: SECOND LAW -->
+
+    <section class="slide" id="slide2">
+
+        <span class="slide-label">02 / NEWTON'S SECOND LAW</span>
+
+        <h2 class="slide-title">
+            Law of <span class="blue">Acceleration</span>
+        </h2>
+
+        <div class="lesson-grid">
+
+            <div class="lesson-card">
+                <h3>WHAT IS THE SECOND LAW?</h3>
+                <p>
+                    The second law explains that the way an object speeds up
+                    depends on how much force we use and how heavy the object
+                    is. When we push an object harder, it can speed up more.
+                    But a heavier object needs more force to speed up.
+                </p>
+
+                <div class="formula">F = m × a</div>
+
+                <p style="font-size:13px;color:#cbd5e1;">
+                    F = Net force | m = Mass | a = Acceleration
+                </p>
+            </div>
+
+            <div class="lesson-card">
+                <h3>REAL-LIFE EXAMPLE: SHOPPING CART</h3>
+                <p>
+                    Imagine pushing a shopping cart. If you push it gently,
+                    it moves and speeds up slowly. If you push it harder,
+                    it speeds up more. This shows that using more force
+                    can make the same cart accelerate more.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="demo-card">
+
+            <h2>Animated Demonstration</h2>
+            <p>Compare how the same shopping cart moves when different forces are applied.</p>
+
+            <div class="scene" id="cartScene">
+                <div class="scene-heading">SHOPPING CART DEMONSTRATION</div>
+                <div class="cart-force">➡️</div>
+                <div class="scene-object cart">🛒</div>
+                <div class="scene-ground"></div>
+                <div class="scene-status" id="cartStatus">
+                    Choose a pushing force.
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="primary-btn" onclick="playCart('gentle')">
+                    Gentle Push
+                </button>
+
+                <button class="primary-btn" onclick="playCart('strong')">
+                    Strong Push
+                </button>
+
+                <button class="reset-btn" onclick="resetCart()">
+                    ↻ Replay
+                </button>
+            </div>
+
+            <div class="explanation">
+                <h3>WHAT HAPPENS?</h3>
+                <p id="cartText">
+                    When you gently push the cart, it moves a shorter distance.
+                    When you push it harder, it moves farther in the same
+                    amount of time. This shows how a stronger force can
+                    cause greater acceleration.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SLIDE 4: THIRD LAW -->
+
+    <section class="slide" id="slide3">
+
+        <span class="slide-label">03 / NEWTON'S THIRD LAW</span>
+
+        <h2 class="slide-title">
+            Action and <span class="blue">Reaction</span>
+        </h2>
+
+        <div class="lesson-grid">
+
+            <div class="lesson-card">
+                <h3>WHAT IS THE THIRD LAW?</h3>
+                <p>
+                    The third law means that forces always come in pairs.
+                    When one object pushes or pulls another object,
+                    the other object pushes or pulls back with the same
+                    amount of force but in the opposite direction.
+                </p>
+            </div>
+
+            <div class="lesson-card">
+                <h3>REAL-LIFE EXAMPLE: PERSON JUMPING</h3>
+                <p>
+                    When a person wants to jump, their feet push the ground
+                    downward. At the same time, the ground pushes the person
+                    upward. This upward push helps the person leave the
+                    ground and jump into the air.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="demo-card">
+
+            <h2>Animated Demonstration</h2>
+            <p>Watch how the person pushes against the ground to jump upward.</p>
+
+            <div class="scene" id="jumpScene">
+                <div class="scene-heading">JUMPING DEMONSTRATION</div>
+                <div class="scene-object jumper">🧍</div>
+                <div class="jump-arrow">⬇️</div>
+                <div class="reaction-arrow">⬆️</div>
+                <div class="scene-ground"></div>
+                <div class="scene-status" id="jumpStatus">
+                    The person is standing on the ground.
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="primary-btn" onclick="playJump()">
+                    ▶ Jump
+                </button>
+
+                <button class="reset-btn" onclick="resetJump()">
+                    ↻ Replay
+                </button>
+            </div>
+
+            <div class="explanation">
+                <h3>WHAT HAPPENS?</h3>
+                <p id="jumpText">
+                    First, the person's feet push the ground downward.
+                    Then the ground pushes the person upward. Because of
+                    this opposite push, the person is able to jump.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SLIDE 5: CONCLUSION -->
+
+    <section class="slide" id="slide4">
+
+        <div class="description">
+
+            <span class="slide-label">CONCLUSION</span>
+
+            <h2 style="font-size:30px;color:#f8fafc;">
+                Understanding <span class="blue">Motion</span>
+            </h2>
+
+            <p>
+                Newton's three laws help us understand how things move
+                around us. Through the examples in this presentation,
+                we can see that pushing, stopping, and jumping all involve
+                forces. These laws are not only found in science lessons
+                but also in our everyday activities.
+            </p>
+
+            <div class="summary-list">
+
+                <div class="summary-card">
+                    <div class="symbol">🏀</div>
+                    <div>
+                        <h3>FIRST LAW - INERTIA</h3>
+                        <p>
+                            An object stays still until a force makes it move.
+                            A moving object keeps moving until a force changes
+                            its motion.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="symbol">🛒</div>
+                    <div>
+                        <h3>SECOND LAW - ACCELERATION</h3>
+                        <p>
+                            Pushing an object harder can make it speed up more.
+                            Heavier objects need more force to get the same
+                            acceleration.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="symbol">🧍</div>
+                    <div>
+                        <h3>THIRD LAW - ACTION AND REACTION</h3>
+                        <p>
+                            When one object pushes another, the second object
+                            pushes back with the same amount of force in the
+                            opposite direction.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="primary-btn" onclick="goTo(0)">
+                ↻ Restart Presentation
+            </button>
+
+        </div>
+    </section>
+
+    <!-- SLIDE NAVIGATION -->
+
+    <div class="slide-navigation">
+
+        <button class="nav-btn" id="previous" onclick="change(-1)">
+            ← Previous
+        </button>
+
+        <span class="page-number" id="pageNumber">
+            01 / 05
+        </span>
+
+        <button class="nav-btn" id="next" onclick="change(1)">
+            Next →
+        </button>
+
+    </div>
+
+    <div class="progress">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <a href="index.html" class="back-button">
+        Back to My Portfolio
+    </a>
+
+</main>
+
+<footer>
+    <p>© 2026 ICT Portfolio | Created by Nicolas</p>
+</footer>
+
+<script>
+"use strict";
+
+/* PRESENTATION NAVIGATION */
+
+let current = 0;
+
+const allSlides = document.querySelectorAll(".slide");
+
+function updatePage() {
+
+    document.getElementById("pageNumber").textContent =
+        String(current + 1).padStart(2, "0") + " / 05";
+
+    document.getElementById("progressFill").style.width =
+        ((current + 1) / allSlides.length * 100) + "%";
+
+    document.getElementById("previous").disabled = current === 0;
+
+    document.getElementById("next").disabled =
+        current === allSlides.length - 1;
+}
+
+function goTo(number) {
+
+    if (number < 0 || number >= allSlides.length) return;
+
+    allSlides[current].classList.remove("active");
+
+    current = number;
+
+    allSlides[current].classList.add("active");
+
+    updatePage();
+}
+
+function change(direction) {
+    goTo(current + direction);
+}
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "ArrowRight") change(1);
+
+    if (event.key === "ArrowLeft") change(-1);
+
+});
+
+
+/* FIRST LAW - BASKETBALL */
+
+function playBall() {
+
+    const scene = document.getElementById("basketScene");
+
+    scene.classList.remove("playing");
+
+    void scene.offsetWidth;
+
+    scene.classList.add("playing");
+
+    document.getElementById("ballStatus").textContent =
+        "The basketball is rolling across the court!";
+
+    document.getElementById("ballText").textContent =
+        "The player pushes the basketball, so it starts moving. As it rolls, friction from the court slows it down until it stops.";
+}
+
+function resetBall() {
+
+    const scene = document.getElementById("basketScene");
+
+    scene.classList.remove("playing");
+
+    void scene.offsetWidth;
+
+    document.getElementById("ballStatus").textContent =
+        "The basketball is at rest.";
+
+    document.getElementById("ballText").textContent =
+        "The basketball is not moving at first. When the player pushes it, the ball starts rolling. Friction from the court slowly makes it stop.";
+}
+
+
+/* SECOND LAW - SHOPPING CART */
+
+function playCart(force) {
+
+    const scene = document.getElementById("cartScene");
+
+    scene.classList.remove("gentle", "strong");
+
+    void scene.offsetWidth;
+
+    scene.classList.add(force);
+
+    if (force === "gentle") {
+
+        document.getElementById("cartStatus").textContent =
+            "A gentle push is applied.";
+
+        document.getElementById("cartText").textContent =
+            "The cart receives a small push, so it accelerates less and does not move as far in the animation.";
+
+    } else {
+
+        document.getElementById("cartStatus").textContent =
+            "A stronger push is applied.";
+
+        document.getElementById("cartText").textContent =
+            "The cart receives a stronger push, so it accelerates more and moves farther in the animation.";
+    }
+}
+
+function resetCart() {
+
+    const scene = document.getElementById("cartScene");
+
+    scene.classList.remove("gentle", "strong");
+
+    void scene.offsetWidth;
+
+    document.getElementById("cartStatus").textContent =
+        "Choose a pushing force.";
+
+    document.getElementById("cartText").textContent =
+        "When you gently push the cart, it moves a shorter distance. When you push it harder, it moves farther in the same amount of time. This shows how a stronger force can cause greater acceleration.";
+}
+
+
+/* THIRD LAW - PERSON JUMPING */
+
+function playJump() {
+
+    const scene = document.getElementById("jumpScene");
+
+    scene.classList.remove("jumping");
+
+    void scene.offsetWidth;
+
+    scene.classList.add("jumping");
+
+    document.getElementById("jumpStatus").textContent =
+        "The person pushes down and jumps upward!";
+
+    document.getElementById("jumpText").textContent =
+        "The person's feet push the ground downward. At the same time, the ground pushes the person upward with an equal force in the opposite direction. This upward force helps the person jump.";
+}
+
+function resetJump() {
+
+    const scene = document.getElementById("jumpScene");
+
+    scene.classList.remove("jumping");
+
+    void scene.offsetWidth;
+
+    document.getElementById("jumpStatus").textContent =
+        "The person is standing on the ground.";
+
+    document.getElementById("jumpText").textContent =
+        "First, the person's feet push the ground downward. Then the ground pushes the person upward. Because of this opposite push, the person is able to jump.";
+}
+
+
+/* INITIALIZE PRESENTATION */
+
+updatePage();
+
+</script>
+
 </body>
 </html>
