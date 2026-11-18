@@ -1,22 +1,305 @@
 
-<!-- OUTPUT 2: Save as output2.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Output 2 - Digital Citizenship</title>
-    <link rel="stylesheet" href="style.css">
+
+    <title>Output 2 - Digital Citizenship Poster</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b1120;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: #111c30;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #263750;
+        }
+
+        nav h2 {
+            color: #38bdf8;
+            font-size: 21px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 55px auto;
+            padding: 0 20px;
+        }
+
+        /* Heading */
+        .heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .heading .label {
+            display: inline-block;
+            background: #17243a;
+            color: #38bdf8;
+            border: 1px solid #263750;
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .heading h1 {
+            font-size: 36px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .heading p {
+            color: #cbd5e1;
+            font-size: 16px;
+        }
+
+        /* Description Cards */
+        .description {
+            background: #17243a;
+            padding: 30px;
+            border: 1px solid #263750;
+            border-radius: 18px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .description h2 {
+            color: #38bdf8;
+            margin-bottom: 12px;
+            font-size: 23px;
+        }
+
+        .description p {
+            color: #cbd5e1;
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        .description ul {
+            padding-left: 25px;
+            margin-top: 8px;
+            color: #cbd5e1;
+        }
+
+        .description li {
+            margin-bottom: 7px;
+        }
+
+        /* Poster Image */
+        .poster-card {
+            background: #17243a;
+            padding: 25px;
+            border: 1px solid #263750;
+            border-radius: 18px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .poster-card img {
+            display: block;
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+
+        /* Image Caption */
+        .poster-caption {
+            color: #cbd5e1;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        /* Slogan */
+        .slogan {
+            text-align: center;
+            padding: 25px;
+            background: #17243a;
+            border: 1px solid #263750;
+            border-left: 4px solid #38bdf8;
+            border-radius: 15px;
+            margin-bottom: 35px;
+        }
+
+        .slogan h3 {
+            color: #38bdf8;
+            font-size: 21px;
+        }
+
+        .slogan p {
+            color: #cbd5e1;
+            margin-top: 8px;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 12px 25px;
+            background: #38bdf8;
+            color: #0b1120;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background: #7dd3fc;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #111c30;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 22px;
+            margin-top: 60px;
+            font-size: 14px;
+            border-top: 1px solid #263750;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            .heading h1 {
+                font-size: 28px;
+            }
+
+            .poster-card {
+                padding: 12px;
+            }
+
+            .description {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <section class="section">
-        <h2>Output 2 - Digital Citizenship</h2>
-        <div class="card">
-            <h3>My Digital Citizenship Project</h3>
-            <p>This page contains my Digital Citizenship output.</p>
-        </div>
-        <br>
-        <a href="index.html#projects" class="btn">← Back to Projects</a>
-    </section>
+
+    <!-- Navigation -->
+    <nav>
+        <h2>ICT Portfolio</h2>
+        <a href="index.html">Home</a>
+    </nav>
+
+    <main class="container">
+
+        <!-- Page Heading -->
+        <section class="heading">
+            <span class="label">OUTPUT 02</span>
+            <h1>Digital Citizenship Poster</h1>
+            <p>Be a Responsible Internet User</p>
+        </section>
+
+        <!-- Activity Instructions -->
+        <section class="description">
+            <h2>Output 2 – Digital Citizenship Poster</h2>
+
+            <p>
+                <strong>Title:</strong> Be a Responsible Internet User
+            </p>
+
+            <p style="margin-top: 10px;">
+                Create an original digital poster showing at least:
+            </p>
+
+            <ul>
+                <li>5 DO's of responsible internet use.</li>
+                <li>5 DON'Ts of responsible internet use.</li>
+                <li>A short reminder or slogan.</li>
+            </ul>
+
+            <p style="margin-top: 10px;">
+                <strong>Website display:</strong>
+                Poster image with a short description.
+            </p>
+        </section>
+
+        <!-- Poster Image -->
+        <section class="poster-card">
+
+            <img
+                src="images/digital-output2.png"
+                alt="Digital Citizenship Poster about responsible internet use"
+                onerror="this.style.display='none'; document.getElementById('image-error').style.display='block';"
+            >
+
+            <p id="image-error" style="display:none; color:#f87171; padding:20px;">
+                Poster image not found. Please check your image folder
+                and filename: digital-output2.png
+            </p>
+
+        </section>
+
+        <!-- Short Description -->
+        <section class="description">
+            <h2>Short Description</h2>
+
+            <p>
+                This digital poster promotes the importance of being a
+                responsible internet user. It presents five DO's and five
+                DON'Ts that can guide people in using the internet safely
+                and properly. It reminds everyone to protect personal
+                information, respect other users, avoid suspicious links,
+                and think carefully before sharing anything online.
+                Through this activity, I learned that being a responsible
+                digital citizen means using technology wisely and helping
+                create a safer and more positive online environment.
+            </p>
+        </section>
+
+        <!-- Back Button -->
+        <a href="index.html" class="back-button">
+            Back to My Portfolio
+        </a>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 ICT Portfolio | Created by Nicolas</p>
+    </footer>
+
 </body>
 </html>
