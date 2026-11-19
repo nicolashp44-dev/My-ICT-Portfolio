@@ -1,22 +1,565 @@
 
-<!-- OUTPUT 5: Save as output5.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <title>Output 5 - ICT Awareness Video</title>
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b1120;
+            color: #f8fafc;
+            line-height: 1.6;
+            overflow-x: hidden;
+            animation: pageEnter 0.8s ease-out both;
+        }
+
+        /* Page Entrance Animation */
+        @keyframes pageEnter {
+            0% {
+                opacity: 0;
+                transform: translateY(25px);
+                filter: blur(6px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            background: #111c30;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+            border-bottom: 1px solid #263750;
+        }
+
+        nav h2 {
+            color: #38bdf8;
+            font-size: 21px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 55px auto;
+            padding: 0 20px;
+        }
+
+        /* Heading */
+        .heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .heading .label {
+            display: inline-block;
+            background: #17243a;
+            color: #38bdf8;
+            border: 1px solid #263750;
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .heading h1 {
+            font-size: 36px;
+            color: #f8fafc;
+            margin-bottom: 10px;
+        }
+
+        .heading p {
+            color: #cbd5e1;
+            font-size: 16px;
+        }
+
+        /* Description Cards */
+        .description {
+            background: #17243a;
+            color: #f8fafc;
+            border: 1px solid #263750;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.18);
+            margin-bottom: 30px;
+        }
+
+        .description h2 {
+            color: #38bdf8;
+            margin-bottom: 12px;
+            font-size: 23px;
+        }
+
+        .description p {
+            color: #cbd5e1;
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        .description ul {
+            padding-left: 25px;
+            margin-top: 8px;
+            color: #cbd5e1;
+        }
+
+        .description li {
+            margin-bottom: 7px;
+        }
+
+        /* Video Card */
+        .video-card {
+            background: #17243a;
+            border: 1px solid #263750;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.18);
+            margin-bottom: 30px;
+        }
+
+        .video-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .video-heading h2 {
+            color: #38bdf8;
+            font-size: 23px;
+        }
+
+        .duration {
+            color: #38bdf8;
+            background: #111c30;
+            border: 1px solid #263750;
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Responsive YouTube Player */
+        .video-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #020617;
+            border: 1px solid #263750;
+        }
+
+        .video-container iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Watch on YouTube Button */
+        .watch-link {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 11px 20px;
+            color: white;
+            background: #dc2626;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .watch-link:hover {
+            background: #b91c1c;
+            transform: translateY(-3px);
+        }
+
+        .video-caption {
+            color: #cbd5e1;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        /* Topics Section */
+        .topics {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #38bdf8;
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .topic-card {
+            background: #17243a;
+            border: 1px solid #263750;
+            padding: 25px;
+            border-radius: 15px;
+            transition: 0.3s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .topic-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .topic-card h3 {
+            color: #38bdf8;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .topic-card p {
+            color: #cbd5e1;
+            font-size: 15px;
+            text-align: justify;
+        }
+
+        /* Conclusion */
+        .conclusion {
+            background: #17243a;
+            color: #f8fafc;
+            border: 1px solid #263750;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.18);
+            margin-bottom: 30px;
+        }
+
+        .conclusion h2 {
+            color: #38bdf8;
+            margin-bottom: 12px;
+            font-size: 23px;
+        }
+
+        .conclusion p {
+            color: #cbd5e1;
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        /* Slogan */
+        .slogan {
+            text-align: center;
+            padding: 25px;
+            background: #17243a;
+            border: 1px solid #263750;
+            border-left: 4px solid #38bdf8;
+            border-radius: 15px;
+            margin-bottom: 35px;
+        }
+
+        .slogan h3 {
+            color: #38bdf8;
+            font-size: 21px;
+        }
+
+        .slogan p {
+            color: #cbd5e1;
+            margin-top: 8px;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 12px 25px;
+            background: #38bdf8;
+            color: #0b1120;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background: #7dd3fc;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #111c30;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 22px;
+            margin-top: 60px;
+            font-size: 14px;
+            border-top: 1px solid #263750;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav h2 {
+                font-size: 18px;
+            }
+
+            .heading h1 {
+                font-size: 28px;
+            }
+
+            .video-card {
+                padding: 15px;
+            }
+
+            .description,
+            .conclusion {
+                padding: 20px;
+            }
+
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topic-card {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <section class="section">
-        <h2>Output 5 - ICT Awareness Video</h2>
-        <div class="card">
-            <h3>My ICT Awareness Video</h3>
-            <p>This page contains my ICT Awareness Video.</p>
-        </div>
-        <br>
-        <a href="index.html#projects" class="btn">← Back to Projects</a>
-    </section>
+
+    <!-- Navigation -->
+    <nav>
+        <h2>ICT Portfolio</h2>
+        <a href="index.html">Home</a>
+    </nav>
+
+    <main class="container">
+
+        <!-- Page Heading -->
+        <section class="heading">
+            <span class="label">OUTPUT 05</span>
+            <h1>ICT Awareness Video</h1>
+            <p>How ICT Changes Our Society</p>
+        </section>
+
+        <!-- Activity Instructions -->
+        <section class="description">
+            <h2>Output 5 – ICT Awareness Video</h2>
+
+            <p>
+                <strong>Title:</strong> How ICT Changes Our Society
+            </p>
+
+            <p style="margin-top: 10px;">
+                Create a 3–5-minute educational video explaining how
+                Information and Communication Technology (ICT) affects
+                our everyday lives and society.
+            </p>
+
+            <ul>
+                <li>How ICT changes communication.</li>
+                <li>How technology affects education and employment.</li>
+                <li>Positive and negative effects of ICT.</li>
+                <li>Responsible use of technology.</li>
+            </ul>
+
+            <p style="margin-top: 10px;">
+                <strong>Website display:</strong>
+                Embed the video from YouTube or another accessible video platform.
+            </p>
+        </section>
+
+        <!-- Video Presentation -->
+        <section class="video-card">
+
+            <div class="video-heading">
+                <h2>🎬 ICT Awareness Video</h2>
+                <span class="duration">3–5 MINUTES</span>
+            </div>
+
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/QRycwoyfLas"
+                    title="How ICT Changes Our Society - ICT Awareness Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <a
+                href="https://www.youtube.com/watch?v=QRycwoyfLas"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="watch-link">
+                ▶ Watch on YouTube
+            </a>
+
+            <p class="video-caption">
+                This animated educational video explains how Information
+                and Communication Technology changes communication,
+                education, employment, and society. It also discusses
+                the positive and negative effects of technology and
+                the importance of using it responsibly.
+            </p>
+
+        </section>
+
+        <!-- Topics Section -->
+        <section class="topics">
+
+            <h2 class="section-title">What You Will Learn</h2>
+
+            <p class="section-description">
+                This video discusses four important topics about
+                the influence of ICT in our modern society.
+            </p>
+
+            <div class="topic-grid">
+
+                <!-- Topic 1 -->
+                <div class="topic-card">
+                    <div class="topic-icon">🌐</div>
+
+                    <h3>01. Communication</h3>
+
+                    <p>
+                        ICT makes communication faster and easier
+                        through social media, instant messaging,
+                        emails, and video calls. People can now
+                        communicate with others around the world
+                        without needing to be in the same place.
+                    </p>
+                </div>
+
+                <!-- Topic 2 -->
+                <div class="topic-card">
+                    <div class="topic-icon">🎓</div>
+
+                    <h3>02. Education & Employment</h3>
+
+                    <p>
+                        Technology helps students access online
+                        learning materials, attend virtual classes,
+                        and improve their knowledge. It also creates
+                        job opportunities and allows people to work
+                        using digital tools and online platforms.
+                    </p>
+                </div>
+
+                <!-- Topic 3 -->
+                <div class="topic-card">
+                    <div class="topic-icon">⚖️</div>
+
+                    <h3>03. Positive & Negative Effects</h3>
+
+                    <p>
+                        ICT provides many benefits, including faster
+                        access to information, easier communication,
+                        and improved productivity. However, it can
+                        also lead to cyberbullying, online scams,
+                        misinformation, and privacy problems.
+                    </p>
+                </div>
+
+                <!-- Topic 4 -->
+                <div class="topic-card">
+                    <div class="topic-icon">🔐</div>
+
+                    <h3>04. Responsible Use of Technology</h3>
+
+                    <p>
+                        Responsible technology use means protecting
+                        personal information, respecting others online,
+                        avoiding suspicious links, checking information
+                        before sharing, and using the internet safely
+                        and positively.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Conclusion -->
+        <section class="conclusion">
+            <h2>Conclusion</h2>
+
+            <p>
+                In conclusion, Information and Communication Technology
+                has become an important part of our everyday lives.
+                It helps us communicate with other people, access
+                information, study, and find different job opportunities.
+                Technology also makes many tasks easier and faster.
+                However, despite its advantages, ICT also has negative
+                effects such as cyberbullying, online scams, and the
+                spread of false information. As users of technology,
+                we should learn how to protect our personal information,
+                respect others, and think carefully before sharing
+                anything online. Overall, ICT can make our society
+                better when we use it wisely, safely, and responsibly.
+            </p>
+        </section>
+
+        <!-- Back Button -->
+        <a href="index.html" class="back-button">
+            Back to My Portfolio
+        </a>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 ICT Portfolio | Created by Nicolas</p>
+    </footer>
+
 </body>
 </html>
